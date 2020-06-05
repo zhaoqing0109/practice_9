@@ -1,0 +1,72 @@
+#name: "lili" # 冒号必须是英文格式，每个冒号后必须跟空格
+#Name: "niuniu"
+
+#data: {"name": "lili", "pwd":"123"}
+#
+#data1:
+#  name: "niuniu"
+#  pwd: "1234"
+
+
+# ---数组---
+#data2:
+#  - "lili"
+#  - "nana"
+#
+#data3: ["123","456"]
+
+
+# 拼接-json {'key': [{'key': 'value'}, {'key': 'value'}]}
+#data4:
+#  - name: "lili"
+#  - pwd: "123"
+
+
+# ---纯量---
+## 字符串 --特殊情况 会在工作中看到   自动转换一部分数据类型
+#name: lili
+
+## 布尔值 --yaml格式
+#bool1: true
+#bool2: false
+
+## 布尔值 --python格式
+#bool3: True
+#bool4: False
+
+## 整数/浮点数
+#int1: 122
+#float1: 12.3
+
+# 空类型  None类型
+# yaml
+#data6: ~
+#data9: null
+#data10: Null
+#data11:
+
+## python 不支持 返回字符串
+#data7: None
+#data8: none
+
+#日期类型
+#date1: 2020-11-11 12:12:12  # 返回python类型为: datetime.datetime
+#date2: 2020-12-12   # 返回python类型为: datetime.date
+#date3: 16:16:16  # 如果需要时分秒 尽量以字符串形式编写
+
+# 特殊日期类型  月 日 时分秒 为个位数
+#date4: 2020-6-2 2:2:2  # 当某个位置为个位数时,需要在前面补0
+#date5: 2020-06-02 02:02:02
+
+
+# 锚点 (解决重复使用yaml文件中某个相同的数据)
+#锚点标记后想防御复制一份子节点的值 ,将锚点自己诶单的值复制一份到引用的位置
+info: &data    # 标记锚点:  $锚点名字
+  name: lili
+  phone: 18810381038
+
+addr:
+  <<: *data   # 引用锚点对应的数据:    <<: *锚点名字
+  detail: "中山路18号"
+
+
